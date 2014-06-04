@@ -57,8 +57,6 @@ public class V1_status {
 			
 			String sql = "insert into person (id, name) values (189, 'zexin2')";			
 			st.execute(sql);
-			
-
 
 			
 			returnString = "<p>Database Status</p> " +

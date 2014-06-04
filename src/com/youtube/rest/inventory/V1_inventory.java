@@ -43,12 +43,13 @@ public class V1_inventory {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public String returnAllPcParts() throws Exception {
+	public Response returnAllPcParts() throws Exception {
 
 		String returnString = null;
 //		Response rb = null;	
 		JSONArray json = new JSONArray();
 		Connection conn = null;
+		Response rb = null;
 
 		try {
 			
@@ -66,13 +67,14 @@ public class V1_inventory {
 			json = converter.toJSONArray(rs);
 			
 			returnString = json.toString();
+			rb = Response.ok(returnString).build();
 
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return returnString;
+		return rb;
 	}
 
 }

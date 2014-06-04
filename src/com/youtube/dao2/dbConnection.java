@@ -10,7 +10,7 @@ public class dbConnection {
 	
 	public static Connection connect() throws Exception {
 		
-		if (conn != null) {
+		if (conn != null && !conn.isClosed()) {
 			return conn;
 		}
 		
