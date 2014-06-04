@@ -50,28 +50,13 @@ public class V1_status {
 			
 			
 			//working
-//			conn = dbConnection.connect();
-//			
-//			java.sql.Statement st;
-//			st = conn.createStatement();	
-//			
-//			String sql = "insert into person (id, name) values (189, 'zexin2')";			
-//			st.execute(sql);
-			
-			
 			conn = dbConnection.connect();
 			
 			java.sql.Statement st;
 			st = conn.createStatement();	
 			
-			String sql = "select to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS') DATETIME from dual";			
+			String sql = "insert into person (id, name) values (189, 'zexin2')";			
 			st.execute(sql);
-
-			ResultSet rs = st.getResultSet();
-			
-			while (rs.next()) {
-				myString = rs.getString("DATETIME");
-			}
 			
 
 
