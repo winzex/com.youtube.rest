@@ -20,6 +20,46 @@ import com.youtube.util.ToJSON;
  * @author 308tube
  */
 public class SchemaQuery extends dbConnection {
+	
+	public int insertIntoPC_PARTS(String ID, 
+			String NAME) 
+		throws Exception {
+
+		PreparedStatement query = null;
+		Connection conn = null;
+		
+		try {
+		/*
+			* If this was a real application, you should do data validation here
+			* before starting to insert data into the database.
+			* 
+			* Important: The primary key on PC_PARTS table will auto increment.
+			* 		That means the PC_PARTS_PK column does not need to be apart of the 
+			* 		SQL insert query below.
+			*/
+			conn = connect();
+			query = conn.prepareStatement("insert into person " +
+			"(id, name) " +
+			"VALUES ( ?, ?) ");
+			
+			
+			int avilInt = Integer.parseInt(ID);
+			query.setInt(1, avilInt);
+			query.setString(2, NAME);
+						
+			query.executeUpdate(); //note the new command for insert statement
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 500; //if a error occurs, return a 500
+		}
+		finally {
+			if (conn != null) conn.close();
+		}
+			
+		return 200;
+	}
+
 
 	/**
 	 * This method will search for a specific brand from the PC_PARTS table.
